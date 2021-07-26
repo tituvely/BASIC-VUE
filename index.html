@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="kr">
 
 <head>
     <meta charset="UTF-8">
@@ -11,13 +11,26 @@
 
 <body>
     <div id="app">
-        {{name}}
+        {{ person.name }} {{ person.age }}
+        </br>
+        {{ nextYear("Hi") }}
     </div>
     <script>
         new Vue({
             el: '#app',
             data: {
-                name: '띠뚱'
+                person: {
+                    name: '띠뚱',
+                    age: 25
+                }
+            },
+            methods: {
+                nextYear: function(greeting) {
+                    return greeting + '! ' + this.person.name + '는 내년에 ' + (this.person.age + 1) + '살이다.'
+                },
+                otherMethod: function() {
+                    this.nextYear();
+                }
             }
         })
     </script>
