@@ -14,6 +14,10 @@
         {{ person.name }} {{ person.age }}
         </br>
         {{ nextYear("Hi") }}
+        </br>
+        <input v-bind:type="type" v-bind:value="inputData">
+        <input :type="type" :value="inputData">
+        <a :href="getLink('BASIC-VUE')">티투 채널</a>
     </div>
     <script>
         new Vue({
@@ -22,7 +26,10 @@
                 person: {
                     name: '띠뚱',
                     age: 25
-                }
+                },
+                type: 'text',
+                inputData: 'HIHI',
+                link: 'https://github.com/tituvely/'
             },
             methods: {
                 nextYear: function(greeting) {
@@ -30,6 +37,9 @@
                 },
                 otherMethod: function() {
                     this.nextYear();
+                },
+                getLink(repository) {
+                    return this.link + repository;
                 }
             }
         })
