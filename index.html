@@ -13,7 +13,9 @@
     <div id="app">
         <!-- 페이지 리로드 방지 -->
         <form v-on:submit.prevent="submit">
-            <input type="text"><br>
+            <!-- 'v-bind:'는 ':'로, 'v-on:'은 '@'로 대체할 수 있다. -->
+            <input type="text" v-bind:value="text" @keyup="updateText"><br>
+            {{text}} <br>
             <button type="submit">Submit</button>
         </form>
     </div>
@@ -21,7 +23,8 @@
         new Vue({
             el: '#app',
             data: {
-                year: 2021
+                year: 2021,
+                text: 'value'
             },
             methods: {
                 plus() {
@@ -33,6 +36,10 @@
                 submit() {
                     alert('submitted');
                     console.log('HELLO');
+                },
+                // 인자를 넣어주지 않았는데 keyup에서 Event Object를 자동으로 넣어주는 것
+                updateText(event) {
+                    this.text = event.target.value;
                 }
             }
         })
