@@ -20,23 +20,21 @@
 
 <body>
     <div id="app">
-        <!-- v-show는 초기에 다 렌더링을 하고, css 스타일을 바꿈으로서 display를 변경한다.-->
-        <!-- 따라서 렌더링 시간은 v-if보다 더 걸리지만, 변환 비용은 적은 편
-        변경이 자주 일어날 것이라면 v-if보다 v-show 권장 -->
-        <div v-show="show">Yes</div>
-        <br>
-        <button @click="toggle">Toggle</button> 
+        <div v-for="(person, index) in people" :key="person.name">
+            {{ person.name }} {{ person.age }} {{index}}
+        </div>
     </div>
     <script>
         new Vue({
             el: '#app',
             data: {
-                show: false
+                people : [
+                    { name: 'a', age: 20},
+                    { name: 'b', age: 21},
+                    { name: 'c', age: 22}
+                ]
             },
             methods: {
-                toggle() {
-                    this.show = !this.show;
-                }
             },         
         })
     </script>
