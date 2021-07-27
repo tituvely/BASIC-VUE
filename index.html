@@ -20,24 +20,22 @@
 
 <body>
     <div id="app">
-        <template v-if="number === 1">
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-        </template>
-        <div v-else-if="number ===2">Yes</div>
-        <div v-else>No</div><br>
-        <button @click="increaseNumber">Increase</button> {{ number }}
+        <!-- v-show는 초기에 다 렌더링을 하고, css 스타일을 바꿈으로서 display를 변경한다.-->
+        <!-- 따라서 렌더링 시간은 v-if보다 더 걸리지만, 변환 비용은 적은 편
+        변경이 자주 일어날 것이라면 v-if보다 v-show 권장 -->
+        <div v-show="show">Yes</div>
+        <br>
+        <button @click="toggle">Toggle</button> 
     </div>
     <script>
         new Vue({
             el: '#app',
             data: {
-                number : 1
+                show: false
             },
             methods: {
-                increaseNumber() {
-                    this.number++;
+                toggle() {
+                    this.show = !this.show;
                 }
             },         
         })
