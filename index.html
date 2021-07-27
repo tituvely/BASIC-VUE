@@ -11,34 +11,31 @@
 
 <body>
     <div id="app">
-        <!-- 페이지 리로드 방지 -->
-        <form v-on:submit.prevent="submit">
-            <input type="text" v-model="text"><br>
-            {{text}} <br>
-            <button type="submit">Submit</button>
-        </form>
+        <button @click="changeMessage">Click</button>
+        <br>
+      <!-- {{ number + 1 }} <br> -->
+      <!-- {{ message.split('').reverse().join('') }} -->
+      {{ reversedMessage }}
     </div>
     <script>
         new Vue({
             el: '#app',
             data: {
-                year: 2021,
-                text: 'value'
+                number: 1,
+                message: "HELLO"
             },
             methods: {
-                plus() {
-                    this.year++;
-                },
-                minus() {
-                    this.year--;
-                },
-                submit() {
-                    alert('submitted');
-                    console.log('HELLO');
-                },
+                changeMessage() {
+                    this.message = "TITU";
+                }
+            },
+            // computed 속성은 caching을 하고 method는 caching을 하지 않는다.
+            computed: {
+                reversedMessage() {
+                    return this.message.split('').reverse().join('')
+                }
             }
         })
     </script>
 </body>
-
 </html>
