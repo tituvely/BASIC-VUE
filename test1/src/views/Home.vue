@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>THIS IS HOME PAGE</h1>
-    <TituCoder />
+    <TituCoder title="home title"/>
   </div>
 </template>
 
