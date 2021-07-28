@@ -1,22 +1,32 @@
 <template>
   <div>
     <h1>THIS IS HOME PAGE</h1>
-    <TituCoder title="home title"/>
+    <form action="">
+      <InputField :name="name" @update-name="updateName" />
+      <br />
+      <button>submit</button>
+    </form>
+    {{ name }}
   </div>
 </template>
 
 <script>
-import TituCoder from '@/components/TituCoder.vue';
+import InputField from "@/components/InputField.vue";
 export default {
   components: {
-    TituCoder
+    InputField,
   },
   data() {
     return {
-      name: 'TITU CODER'
-    }
+      name: "",
+    };
   },
-}
+  methods: {
+    updateName(name) {
+      this.name = name;
+    },
+  },
+};
 </script>
 
 <style scoped>
