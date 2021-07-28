@@ -19,36 +19,60 @@
 </head>
 <body>
     <div id="app">
-        {{name}}<br>
-        <button @click = "changeText">Click</button>
+        <!-- {{name}}<br> -->
+        <!-- <button @click = "changeText">Click</button> -->
+        <titu-button></titu-button>
     </div>
     <div id="app-1">
-        {{name}}<br>
-        <button @click = "changeText">Click</button>
+        <!-- {{name}}<br> -->
+        <!-- <button @click = "changeText">Click</button> -->
+        <titu-button></titu-button>
     </div>
     <script>
-        const app = new Vue({
-            el: '#app',
-            data: {
-                name: 'titu'
+        Vue.component('hello-world', {
+            template: '<div>HELLO WORLD</div>'
+        })
+        Vue.component('titu-button', {
+            template: `
+            <div>
+                {{name}}<br>
+                <hello-world></hello-world>
+                <button @click = "changeText">Click</button>
+            </div>
+            `,
+            data() {
+                return {
+                    name: 'titu' 
+                }
             },
             methods: {
                 changeText() {
-                    app1.name = 'titu updated';
+                    this.name = 'titu updated';
                 }
             },         
+        });
+        const app = new Vue({
+            el: '#app',
+            // data: {
+            //     name: 'titu'
+            // },
+            // methods: {
+            //     changeText() {
+            //         this.name = 'titu updated';
+            //     }
+            // },         
         })
 
         const app1 = new Vue({
             el: '#app-1',
-            data: {
-                name: 'titu1'
-            },
-            methods: {
-                changeText() {
-                    this.name = 'titu1 updated';
-                }
-            },         
+            // data: {
+            //     name: 'titu'
+            // },
+            // methods: {
+            //     changeText() {
+            //         this.name = 'titu updated';
+            //     }
+            // },    
         })
     </script>
 </body>
