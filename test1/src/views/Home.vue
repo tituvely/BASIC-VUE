@@ -2,7 +2,7 @@
   <div>
     <h1>THIS IS HOME PAGE</h1>
     <form action="">
-      <InputField :name="name" @update-name="name = $event.target.value" />
+      <InputField v-model="name" />
       <br />
       <button>submit</button>
     </form>
@@ -21,11 +21,6 @@ export default {
       name: " ",
     };
   },
-  // methods: {
-  //   updateName(name) {
-  //     this.name = name;
-  //   },
-  // },
 };
 </script>
 
