@@ -1,34 +1,29 @@
 <template>
   <div id="app" class="container">
     <h1 class="text-center">TODO APP</h1>
-    <input
-      v-model="todoText"
-      type="text"
-      class="w-100 p-2"
-      placeholder="Type todo"
-      @keyup.enter="addTodo"
-    />
+    <CompletedTodo :todos="todos" />
+    <AppTodo @add-todo="addTodo" />
     <hr />
-    <Todo
-      v-for="todo in todos"
-      :key="todo.id"
-      :todo="todo"
-      @toggle-checkbox="toggleCheckbox"
+    <TodoList
+      v-bind:todos="todos"
+      v-on:toggle-checkbox="toggleCheckbox"
       @click-delete="deleteTodo"
     />
   </div>
 </template>
 
 <script>
-import Todo from "@/components/Todo.vue";
-
+import AppTodo from "@/components/AppTodo";
+import TodoList from "@/components/TodoList";
+import CompletedTodo from "@/components/CompletedTodo";
 export default {
   components: {
-    Todo,
+    AppTodo,
+    TodoList,
+    CompletedTodo,
   },
   data() {
     return {
-      todoText: "",
       todos: [
         { id: 1, text: "buy a car", checked: false },
         { id: 2, text: "play game", checked: true },
@@ -36,25 +31,18 @@ export default {
     };
   },
   methods: {
-    addTodo(e) {
+    addTodo(value) {
       this.todos.push({
         id: Math.random(),
-        text: e.target.value,
+        text: value,
         checked: false,
       });
-      this.todoText = "";
     },
     toggleCheckbox({ id, checked }) {
-      const index = this.todos.findIndex((todo) => {
-        return todo.id === id;
-      });
+      const index = this.todos.findIndex((todo) => todo.id === id);
       this.todos[index].checked = checked;
     },
     deleteTodo(id) {
-      // const index = this.todos.findIndex((todo) => {
-      //   return todo.id === id;
-      // });
-      // this.todos.splice(index, 1);
       this.todos = this.todos.filter((todo) => todo.id !== id);
     },
   },
