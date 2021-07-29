@@ -5,6 +5,7 @@
     <AddTodo />
     <hr />
     <TodoList />
+    <UserList />
   </div>
 </template>
 
@@ -12,11 +13,13 @@
 import AddTodo from "@/components/AddTodo";
 import TodoList from "@/components/TodoList";
 import CompletedTodo from "@/components/CompletedTodo";
+import UserList from "@/components/UserList";
 export default {
   components: {
     AddTodo,
     TodoList,
     CompletedTodo,
+    UserList,
   },
 };
 </script>

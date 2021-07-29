@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import axios from "axios";
 
 Vue.use(Vuex);
 
@@ -9,8 +10,12 @@ export default new Vuex.Store({
       { id: 1, text: "buy a car", checked: false },
       { id: 2, text: "play game", checked: true },
     ],
+    users: [],
   },
   mutations: {
+    SET_USERS(state, users) {
+      state.users = users;
+    },
     ADD_TODO(state, value) {
       state.todos.push({
         id: Math.random(),
@@ -27,6 +32,11 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    getUsers({ commit }) {
+      axios.get("https://jsonplaceholder.typicode.com/users").then((res) => {
+        commit("SET_USERS", res.data);
+      });
+    },
     // 비동기 작업을 주로 써줌
     addTodo({ commit }, value) {
       setTimeout(function() {
