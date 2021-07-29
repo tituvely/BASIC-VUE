@@ -1,7 +1,7 @@
 <template>
   <div>
     USERLIST
-    <div v-for="user in people" :key="user.id">
+    <div v-for="user in users" :key="user.id">
       {{ user.name }}
     </div>
   </div>
@@ -11,24 +11,19 @@
 import { mapState, mapActions } from "vuex";
 export default {
   created() {
-    this.getPeople();
+    this.getUsers();
   },
   computed: {
-    // ...mapState(["todos", "users"]),
-    ...mapState({ people: "users" }),
-    // users() {
-    //   return this.$store.state.users;
-    // },
-    // todos() {
-    //   return this.$store.state.todos;
-    // },
+    // ...mapState({
+    //   users: (state) => state.user.users,
+    // }),
+    // ...mapState("user", {
+    //   users: (state) => state.users,
+    // }),
+    ...mapState("user", ["users"]),
   },
   methods: {
-    // ...mapActions(["getUsers"]),
-    ...mapActions({ getPeople: "getUsers" }),
-    // getUsers() {
-    //   this.$store.dispatch("getUsers");
-    // },
+    ...mapActions("user", ["getUsers"]),
   },
 };
 </script>
