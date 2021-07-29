@@ -18,8 +18,37 @@ export default {
   },
   data() {
     return {
-      name: " ",
+      name: "TITU CODER",
     };
+  },
+  beforeCreate() {
+    console.log("beforeCreate " + this.name); //undefined
+  },
+  created() {
+    console.log("created " + this.name); //TITU CODER
+  },
+  beforeMount() {
+    alert("beforeMount");
+  },
+  mounted() {
+    alert("Mounted");
+  },
+  beforeUpdate() {
+    alert("beforeUpdate");
+  },
+  updated() {
+    alert("Updated");
+  },
+  beforeDestroy() {
+    alert("beforeDestroy");
+  },
+  destroyed() {
+    alert("destroyed");
+  },
+  methods: {
+    updateName() {
+      this.name = "HELLO";
+    },
   },
 };
 </script>
