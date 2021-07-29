@@ -2,7 +2,7 @@
   <div id="app" class="container">
     <h1 class="text-center">TODO APP</h1>
     <CompletedTodo />
-    <AppTodo @add-todo="addTodo" />
+    <AddTodo @add-todo="addTodo" />
     <hr />
     <TodoList
       v-on:toggle-checkbox="toggleCheckbox"
@@ -12,12 +12,12 @@
 </template>
 
 <script>
-import AppTodo from "@/components/AppTodo";
+import AddTodo from "@/components/AddTodo";
 import TodoList from "@/components/TodoList";
 import CompletedTodo from "@/components/CompletedTodo";
 export default {
   components: {
-    AppTodo,
+    AddTodo,
     TodoList,
     CompletedTodo,
   },
