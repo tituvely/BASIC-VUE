@@ -1,11 +1,10 @@
 <template>
   <div id="app" class="container">
     <h1 class="text-center">TODO APP</h1>
-    <CompletedTodo :todos="todos" />
+    <CompletedTodo />
     <AppTodo @add-todo="addTodo" />
     <hr />
     <TodoList
-      v-bind:todos="todos"
       v-on:toggle-checkbox="toggleCheckbox"
       @click-delete="deleteTodo"
     />
@@ -23,12 +22,7 @@ export default {
     CompletedTodo,
   },
   data() {
-    return {
-      todos: [
-        { id: 1, text: "buy a car", checked: false },
-        { id: 2, text: "play game", checked: true },
-      ],
-    };
+    return {};
   },
   methods: {
     addTodo(value) {
