@@ -1,12 +1,6 @@
 <template>
   <div>
-    <Todo
-      v-for="todo in todos"
-      v-bind:key="todo.id"
-      v-bind:todo="todo"
-      v-on:toggle-checkbox="toggleCheckbox"
-      @click-delete="clickDelete"
-    />
+    <Todo v-for="todo in todos" v-bind:key="todo.id" v-bind:todo="todo" />
   </div>
 </template>
 
@@ -19,14 +13,6 @@ export default {
   computed: {
     todos() {
       return this.$store.state.todos;
-    },
-  },
-  methods: {
-    toggleCheckbox(value) {
-      this.$emit("toggle-checkbox", value);
-    },
-    clickDelete(todoId) {
-      this.$emit("click-delete", todoId);
     },
   },
 };
